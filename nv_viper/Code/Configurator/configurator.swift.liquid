@@ -1,0 +1,8 @@
+{% include 'header' %}
+
+final class {{ prefix }}{{ module_info.name }}Configurator {
+    func configure() -> {{ prefix }}{{ module_info.name }}ModuleInput {
+        let moduleInput = AppDelegate.moduleAssembly.resolver.resolve({{ prefix }}{{ module_info.name }}ModuleInput.self)!
+        return moduleInput
+    }
+}
