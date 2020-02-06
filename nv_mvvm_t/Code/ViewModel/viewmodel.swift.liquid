@@ -1,0 +1,32 @@
+{% include 'header' %}
+
+import RxSwift
+import RxCocoa
+
+protocol {{ prefix }}{{ module_info.name }}ViewModelInput {
+
+}
+
+protocol {{ prefix }}{{ module_info.name }}ViewModelOutput {
+
+}
+
+protocol {{ prefix }}{{ module_info.name }}ModelType {
+
+}
+
+final class {{ prefix }}{{ module_info.name }}ViewModel: {{ prefix }}{{ module_info.name }}ViewModelInput, {{ prefix }}{{ module_info.name }}ViewModelOutput, {{ prefix }}{{ module_info.name }}ModelType {
+
+    // MARK: Inputs & Outputs
+    var inputs: {{ prefix }}{{ module_info.name }}ViewModelInput { return self }
+    var outputs: {{ prefix }}{{ module_info.name }}ViewModelOutput { return self }
+
+    // MARK: Input
+
+    // MARK: Output
+
+    // MARK: Initialization
+    init() { 
+        
+    }
+}

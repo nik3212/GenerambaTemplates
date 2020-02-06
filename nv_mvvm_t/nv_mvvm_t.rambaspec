@@ -1,0 +1,16 @@
+# Template information section
+name: nv_mvvm_t
+summary: Swift + MVVM
+author: Nikita Vasilev
+version: 1.0.0
+license: MIT
+
+# The declarations for code files
+
+code_files:
+# View layer
+- {name: View/ViewController.swift, path: Code/View/viewcontroller.swift.liquid}
+- {name: View/Module.storyboard, path: Code/View/viewcontroller.storyboard.liquid}
+
+# ViewModel layer
+- {name: ViewModel/ViewModel.swift, path: Code/ViewModel/viewmodel.swift.liquid}
