@@ -52,7 +52,7 @@ test_files:
 - {name: Router/RouterTests.swift, path: Tests/Router/router_tests.swift.liquid}
 
 # Configurator tests
-- {name: Configurator/ConfiguratorTests, path: Tests/Configurator/configurator_tests.swift.liquid}
+- {name: Configurator/ConfiguratorTests.swift, path: Tests/Configurator/configurator_tests.swift.liquid}
 
 # Template dependencies
 dependencies:
