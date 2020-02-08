@@ -13,8 +13,8 @@ class {{ prefix }}{{ module_info.name }}ModuleAssemblyTests: QuickSpec {
         let assembly = {{ module_info.name }}ModuleAssembly()
         assembly.assemble(container: container)
 
-        let presenter = container.resolve({{ module_info.name }}ModuleInput.self) as? {{ module_info.name }}Presenter
-        let viewController = presenter?.view as? {{ module_info.name }}ViewController
+        let viewController = container.resolve({{ module_info.name }}ViewController.self)
+        let presenter = viewController.output as? {{ module_info.name }}Presenter
         let router = presenter?.router as? {{ module_info.name }}Router
         let interactor = presenter?.interactor as? {{ module_info.name }}Interactor
 

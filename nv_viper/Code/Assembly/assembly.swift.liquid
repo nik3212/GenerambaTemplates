@@ -16,9 +16,8 @@ final class {{ prefix }}{{ module_info.name }}ModuleAssembly: Assembly {
             return router
         }
 
-        container.register({{ prefix }}{{ module_info.name }}ModuleInput.self) { (resolver) in 
+        container.register({{ prefix }}{{ module_info.name }}ModuleInput.self) { (resolver, viewController: {{ prefix }}{{ module_info.name }}ViewController) in 
             let presenter = {{ prefix }}{{ module_info.name }}Presenter()
-            let viewController = resolver.resolve({{ prefix }}{{ module_info.name }}ViewController.self, argument: presenter)!
 
             presenter.view = viewController
             presenter.interactor = resolver.resolve({{ prefix }}{{ module_info.name }}Interactor.self, argument: presenter)
@@ -27,9 +26,9 @@ final class {{ prefix }}{{ module_info.name }}ModuleAssembly: Assembly {
             return presenter
         }
 
-        container.register({{ prefix }}{{ module_info.name }}ViewController.self) { (_, presenter: {{ prefix }}{{ module_info.name }}Presenter) in
+        container.register({{ prefix }}{{ module_info.name }}ViewController.self) { (resolver) in
             let viewController = ViewControllerFactory.instantiate(.{{ prefix }}{{ module_info.name }}) as {{ prefix }}{{ module_info.name }}ViewController
-            viewController.output = presenter
+            viewController.output = resolver.resolve({{ prefix }}{{ module_info.name }}ModuleInput.self, argument: viewController) as? {{ prefix }}{{ module_info.name }}Presenter
             return viewController
         }
     }
