@@ -7,6 +7,13 @@ import Nimble
 
 class {{ prefix }}{{ module_info.name }}ConfiguratorTests: QuickSpec {
     override func spec() {
-        
+        let module = {{ module_info.name }}Configurator().configure()
+
+        describe("Check module configuration") {
+            it("Module input shouldn't be nil") {
+                expect(module).notTo(beNil())
+                expect(module).to(beAKindOf({{ module_info.name }}ModuleInput.self))
+            }
+        }
     }
 }
