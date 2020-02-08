@@ -14,7 +14,7 @@ class {{ prefix }}{{ module_info.name }}ModuleAssemblyTests: QuickSpec {
         assembly.assemble(container: container)
 
         let viewController = container.resolve({{ module_info.name }}ViewController.self)
-        let presenter = viewController.output as? {{ module_info.name }}Presenter
+        let presenter = viewController?.output as? {{ module_info.name }}Presenter
         let router = presenter?.router as? {{ module_info.name }}Router
         let interactor = presenter?.interactor as? {{ module_info.name }}Interactor
 
