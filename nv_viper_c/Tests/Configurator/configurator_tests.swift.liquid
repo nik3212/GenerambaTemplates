@@ -7,11 +7,11 @@ import Nimble
 
 class {{ prefix }}{{ module_info.name }}ConfiguratorTests: QuickSpec {
     override func spec() {
-        let configurator = {{ module_info.name }}ModuleConfigurator()
+        let configurator = {{ module_info.name }}Configurator()
         let module = configurator.configureModule()
 
         let presenter = module as? {{ module_info.name }}Presenter
-        let viewController = presenter?.output as? {{ module_info.name }}ViewController
+        let viewController = presenter?.view as? {{ module_info.name }}ViewController
         let router = presenter?.router as? {{ module_info.name }}Router
         let interactor = presenter?.interactor as? {{ module_info.name }}Interactor
 
