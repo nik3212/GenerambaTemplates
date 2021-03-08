@@ -1,0 +1,33 @@
+{% include 'header' %}
+
+import Dip
+
+final class {{ prefix }}{{ module_info.name }}Assembly {
+    init(inContainer container: DependencyContainer) {
+        container.register { {{ prefix }}{{ module_info.name }}Controller() }
+            .implements({{ prefix }}{{ module_info.name }}ViewInput.self)
+            .resolvingProperties { container, controller in
+                controller.output = try container.resolve()
+                controller.moduleInput = try container.resolve() as {{ prefix }}{{ module_info.name }}ModuleInput
+            }
+
+        contaienr.register { {{ prefix }}{{ module_info.name }}Router() }
+            .implements({{ prefix }}{{ module_info.name }}RouterInput.self)
+            .resolvingProperties { container, presenter in 
+                presenter.transitionHandler = container.resolve() as {{ prefix }}{{ module_info.name }}Controller
+            }
+
+        container.register { {{ prefix }}{{ module_info.name }}Presenter(interactor: $0) }
+            .implements({{ prefix }}{{ module_info.name }}ViewOutput.self, {{ prefix }}{{ module_info.name }}InteractorOutput.self,
+                        {{ prefix }}{{ module_info.name }}ModuleInput.self)
+            .resolvingProperties { container, presenter in
+                presenter.view = try container.resolve()
+            }
+
+        container.register { {{ prefix }}{{ module_info.name }}Interactor() }
+            .implements({{ prefix }}{{ module_info.name }}InteractorInput.self)
+            .resolvingProperties { container, interactor in
+                interactor.output = try container.resolve()
+            }
+    }
+}

@@ -1,0 +1,11 @@
+{% include 'header' %}
+
+import Quick
+import Nimble
+import Dip
+
+@testable import {{ module_info.project_name }}
+
+class {{ prefix }}{{ module_info.name }}ModuleAssemblyTests: QuickSpec {
+    override func spec() { }
+}
