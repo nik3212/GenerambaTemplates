@@ -11,13 +11,13 @@ final class {{ prefix }}{{ module_info.name }}Assembly {
                 controller.moduleInput = try container.resolve() as {{ prefix }}{{ module_info.name }}ModuleInput
             }
 
-        contaienr.register { {{ prefix }}{{ module_info.name }}Router() }
+        container.register { {{ prefix }}{{ module_info.name }}Router() }
             .implements({{ prefix }}{{ module_info.name }}RouterInput.self)
             .resolvingProperties { container, presenter in 
-                presenter.transitionHandler = container.resolve() as {{ prefix }}{{ module_info.name }}Controller
+                presenter.transitionHandler = try container.resolve() as {{ prefix }}{{ module_info.name }}Controller
             }
 
-        container.register { {{ prefix }}{{ module_info.name }}Presenter(interactor: $0) }
+        container.register { {{ prefix }}{{ module_info.name }}Presenter(interactor: $0, router: $1) }
             .implements({{ prefix }}{{ module_info.name }}ViewOutput.self, {{ prefix }}{{ module_info.name }}InteractorOutput.self,
                         {{ prefix }}{{ module_info.name }}ModuleInput.self)
             .resolvingProperties { container, presenter in
